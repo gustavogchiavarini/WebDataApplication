@@ -5,10 +5,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 from sqlalchemy import create_engine 
-engine = create_engine('sqlite:///2_scripts/banco.db', echo=True)
-connection = engine.raw_connection()
+engine = create_engine('sqlite:///banco.db', echo=True)
+# connection = engine.raw_connection()
 
-dados = pd.read_sql('SELECT * FROM dados', con=connection)
+dados = pd.read_sql('SELECT * FROM dados', con=engine)
 
 dados['preco2'] = pd.to_numeric(dados['preco2'], errors='coerce')
 
